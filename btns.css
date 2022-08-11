@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Changa:wght@300&display=swap');
+
+
+.btns{
+    width: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.btns button{
+    font-size: large;
+    font-family: 'Changa';
+    font-weight: 500;
+    height: 90px;
+    width: 100px;
+    text-align: center;
+    background-color: white;
+    border-style: dashed;
+    border-radius: 5px;
+}
+
+.btns button:hover{
+    background-color: grey;
+    color: white;
+}
+
+.playerPressed
+{
+    transition: all 0.3s ease;
+    border-color: #ffc600;
+    box-shadow: 0 0 1rem #ffc600;
+    animation: shake1 0.5s;
+
+  }
+
+@keyframes shake1{
+    0%{
+        transform: translateX(0px);
+    }
+    
+    25%{
+        transform: translateY(20px)translateX(20px)
+    }
+
+    50%{
+        transform: translateX(0px);
+    }
+         
+    75%{
+        transform: translateY(20px) translateX(-20px);
+    }
+    100%{
+        transform: translateX(0px);
+    }
+}
+
+
+  

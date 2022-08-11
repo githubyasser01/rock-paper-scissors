@@ -1,18 +1,43 @@
 var getComputerChoice = arr => {
     return arr[Math.floor(Math.random() * arr.length)]
 }
+var pscore = 0, cscore = 0, t = 0;
+//put the selection buttons into a node-list called 'buttons'.
+ let buttons = document.querySelectorAll('.btn');
+
+//loop over each choice to add an event-listener and respond by transitioning + audio
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+        let playerSelecion = button.innerText;
+        let audio = document.getElementById(`${playerSelecion}-sound`);
+        if(audio)
+            audio.currentTime = 0;
+            audio.play();
+        button.classList.add('playerPressed'); //could set a timeout fn. here to remove the class but it might cause sync issues
+        playRound(playerSelecion);
+
+        }
+        )
+        }
+    )
+//function to remove the '.playerPressed' transition effect
+    function removeTransition(e){
+        if(e.propertyName !== 'box-shadow') //should pick the longest one 
+            return;
+        else
+            this.classList.remove('playerPressed');
+    }
+//loop over each button to remove the transition
+    buttons.forEach(button => button.addEventListener('transitionend', removeTransition))
 
 var arr = ["rock", "paper", "scissors"]
 
-function playRound()
+function playRound(playerSelection)
 {
-        let computerSelection = getComputerChoice(arr);
-        let playerSelection = prompt().toLowerCase();
-    
-        if (playerSelection == computerSelection)
-        { console.log("Tie!");
-        return -1;
-        }
+    let computerSelection = getComputerChoice(arr);  
+    if (playerSelection == computerSelection){ 
+		console.log("Tie!");
+    }
         
     else
         {switch (playerSelection + computerSelection){
@@ -20,28 +45,19 @@ function playRound()
             case 'scissorspaper':
             case 'paperrock':
                 console.log("You win!", (playerSelection.toLowerCase()).charAt(0).toUpperCase() + playerSelection.slice(1), "beats", computerSelection,".");
-                return 1;
+				pscore+=1;
+				break;
             default:
                 console.log("You lose!", (playerSelection.toLowerCase()).charAt(0).toUpperCase() + playerSelection.slice(1), "loses against", computerSelection,".");
-                return 0;
+                cscore+=1;
+				break;
             }
         }
+	
+	let max = Math.max(pscore, cscore, 5);
+	if (max == pscore) console.log("You are the ultimate winner.");
+	else if (max == cscore) console.log("Computer wins.");
     }
 
-function game(n){
-    let pscore = 0, cscore = 0, t = 0;
 
-    for (let i = 0; i < n; i++)
-    {
-        x = playRound();
-        if (x==1) pscore+=1;
-        else if (x==0) cscore+=1;
-        else t+=1;
-    }
-    let max = Math.max(pscore, cscore, t);
-    if ((max == t && pscore == cscore) || pscore == cscore) console.log("Tied.");
-    else if (max == pscore) console.log("You are the ultimate winner.");
-    else console.log("Computer wins.");
-}
 
-game(5);
