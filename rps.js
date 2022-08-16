@@ -1,6 +1,11 @@
 var getComputerChoice = arr => {
     return arr[Math.floor(Math.random() * arr.length)]
 }
+
+var statusBar = document.querySelector(".status")
+var cDisplay = document.querySelector(".computerSelection")
+var pDisplay = document.querySelector(".playerSelection") 
+
 var pscore = 0, cscore = 0, t = 0;
 //put the selection buttons into a node-list called 'buttons'.
  let buttons = document.querySelectorAll('.btn');
@@ -37,6 +42,7 @@ function playRound(playerSelection)
     let computerSelection = getComputerChoice(arr);  
     if (playerSelection == computerSelection){ 
 		console.log("Tie!");
+        statusBar.innerText = "Tie!";
     }
         
     else
@@ -44,20 +50,21 @@ function playRound(playerSelection)
             case 'rockscissors':
             case 'scissorspaper':
             case 'paperrock':
-                console.log("You win!", (playerSelection.toLowerCase()).charAt(0).toUpperCase() + playerSelection.slice(1), "beats", computerSelection,".");
+            statusBar.innerText = "You Win!" + " " + (playerSelection.toLowerCase()).charAt(0).toUpperCase() + playerSelection.slice(1) + " " + "wins against" +" " + computerSelection + ".";
 				pscore+=1;
 				break;
             default:
-                console.log("You lose!", (playerSelection.toLowerCase()).charAt(0).toUpperCase() + playerSelection.slice(1), "loses against", computerSelection,".");
+                statusBar.innerText = "You lose!" + " " + (playerSelection.toLowerCase()).charAt(0).toUpperCase() + playerSelection.slice(1) + " " + "loses against" +" " + computerSelection + ".";
                 cscore+=1;
 				break;
             }
         }
+    pDisplay.innerText = "You threw" + " " + playerSelection + ". Current score: " + pscore
+    cDisplay.innerText = "Computer went" + " " + computerSelection + ". Current score: " + cscore
 	
-	let max = Math.max(pscore, cscore, 5);
-	if (max == pscore) console.log("You are the ultimate winner.");
-	else if (max == cscore) console.log("Computer wins.");
+	var max = Math.max(pscore, cscore, 5);
+	if (max == pscore) statusBar.innerText = String("You are the ultimate winner.");
+	else if (max == cscore) statusBar.innerText = String("Computer wins.");
     }
-
 
 

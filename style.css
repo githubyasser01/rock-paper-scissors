@@ -1,8 +1,44 @@
 @import url('https://fonts.googleapis.com/css2?family=Changa:wght@300&display=swap');
 
 *{
+    font-family:'Changa';
     margin: 0px;
     align-self: center;
+}
+
+.scoreKeep{
+    display: flex;
+    flex-direction: row;
+    font-size: 20px; 
+    align-content: center;
+    justify-content: space-between;
+}
+.status{
+    border: none;
+}
+.scoreKeep{
+    text-align: center;
+    text-justify: center;
+    margin-top: 100px;
+    width:70%;
+    height: 30px;
+}
+
+.playerSelection,
+.computerSelection{
+    border-width: thin;
+    background-color: grey;
+    border-color: red;
+    border-style: solid;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 30%;
+    height: 40px;
+
+}
+
+.playerSelection{
+    border-color: blue;
 }
 
 body{
@@ -16,7 +52,7 @@ body{
 }
 
 .intro{
-    margin-top: 150px;
+    margin-top: 60px;
     font-family:'Changa';
     font-size: 40px;
 }
