@@ -8,7 +8,8 @@
     <script src="./rps.js" defer> </script>
     <script src="./rps.js" defer> </script>
     <link rel="stylesheet" href="btns.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="intro.css">
+    <link rel="stylesheet" href="game.css">
 </head>
 
 <body>
@@ -17,16 +18,17 @@
         <a>Click here for instructions...</a>
     </div>
     <div class="scoreKeep">
-        <div class="playerSelection">Player threw</div>
-        <div class="status">
-        </div>    
-        <div class="computerSelection">Computer went</div>
+        <div class="badge" id="p_badge">Player threw</div>
+        <div class="badge" id="c_badge">Computer went</div>
+        <div class="badge" id="p_score"> 0 </div>
+        <div class="badge" id="c_score"> 0 </div>
+        <div class="status"> Make a move. </div>    
     </div>
     <div class="btns">
     <div class="btn"> 
             <button>rock</button>
             <audio id="rock-sound" src="audio/rock.ogg"></audio>
-        </div>
+    </div>
         <div class="btn">
             <button>paper</button>
             <audio preload="auto" id="paper-sound" src="audio/paper.ogg"></audio>

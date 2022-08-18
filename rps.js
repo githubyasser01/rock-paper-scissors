@@ -2,10 +2,11 @@ var getComputerChoice = arr => {
     return arr[Math.floor(Math.random() * arr.length)]
 }
 
-var statusBar = document.querySelector(".status")
-var cDisplay = document.querySelector(".computerSelection")
-var pDisplay = document.querySelector(".playerSelection") 
-
+var statusBar = document.querySelector(".status");
+var cDisplay = document.querySelector("#c_badge");
+var pDisplay = document.querySelector("#p_badge");
+var pDisplay_score = document.getElementById("p_score");
+var cDisplay_score = document.getElementById("c_score");
 var pscore = 0, cscore = 0, t = 0;
 //put the selection buttons into a node-list called 'buttons'.
  let buttons = document.querySelectorAll('.btn');
@@ -59,8 +60,10 @@ function playRound(playerSelection)
 				break;
             }
         }
-    pDisplay.innerText = "You threw" + " " + playerSelection + ". Current score: " + pscore
-    cDisplay.innerText = "Computer went" + " " + computerSelection + ". Current score: " + cscore
+    pDisplay.innerText = "You threw" + " " + playerSelection;
+    pDisplay_score.innerText = pscore;
+    cDisplay.innerText = "Computer went" + " " + computerSelection; 
+    cDisplay_score.innerText = cscore;
 	
 	var max = Math.max(pscore, cscore, 5);
 	if (max == pscore) statusBar.innerText = String("You are the ultimate winner.");

@@ -1,0 +1,74 @@
+body{
+    background-color: rgb(243, 236, 228);
+    margin-top: 0px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: center;
+    gap: 120px;
+}
+
+.intro{
+    margin-top: 20px;
+    font-family:'Changa';
+    font-size: 40px;
+}
+
+.intro h1{
+    opacity: 50;
+    transform: translateY(-10rem);
+    animation: fadeInUp 2s ease forwards;
+}
+
+.intro a::before, 
+.intro a::after{
+    content:"";
+    position: absolute;
+    top: 0;
+    right: 0; 
+    left: 0; 
+    bottom: 0;
+}
+
+.intro a::before{
+    background-color: rgb(243, 236, 228);
+    animation: typewriter 3s steps(31) 2.5s forwards;
+}
+
+.intro a::after{
+    width: 0.125em;
+    background-color: black;
+    animation:
+    typewriter 3s steps(31) 2.5s forwards,
+    blink 750ms steps(31) 2s infinite;
+}
+.intro a{
+    margin-left: 1em;
+    text-decoration: underline;
+    position: relative;
+}
+
+
+@keyframes typewriter{
+    to {
+        left: 100%;
+    }
+}
+
+@keyframes blink{
+    to{
+        background-color: transparent;
+    }
+}
+
+@keyframes fadeInUp{
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@keyframes fadein{
+    to{
+        opacity: 1;
+    }
+}
