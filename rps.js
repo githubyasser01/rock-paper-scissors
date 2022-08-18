@@ -59,7 +59,7 @@ function playRound(playerSelection)
         statusBar.innerText = "Tie!";
     }
         
-    else  if (playerSelection === playerSelection.beats){
+    else  if (playerSelection === computerSelection.beats){
 
                 statusBar.innerText = "You lose!" + " " + (playerSelection.toLowerCase()).charAt(0).toUpperCase() + playerSelection.slice(1) + " " + "loses against" +" " + computerSelection.name + ".";
                 cscore+=1;
