@@ -15,7 +15,7 @@ var pscore = 0, cscore = 0, t = 0;
     buttons.forEach(button => {
         button.addEventListener('click', () => {
         let playerSelecion = button.innerText;
-        let audio = document.getElementById(`${playerSelecion}-sound`);
+        let audio = document.getElementById(`${button.id}-sound`);
         if(audio)
             audio.currentTime = 0;
             audio.play();
@@ -36,38 +36,45 @@ var pscore = 0, cscore = 0, t = 0;
 //loop over each button to remove the transition
     buttons.forEach(button => button.addEventListener('transitionend', removeTransition))
 
-var arr = ["rock", "paper", "scissors"]
+const SELECTIONS  = [
+    {
+        name: "a rock",
+        beats: "a pair of scissors",
+    },
+    {
+        name: "a pair of scissors",
+        beats: "a piece of paper"
+    },
+    {
+        name: "a piece of paper",
+        beats: "a rock"
+    }
+]
 
 function playRound(playerSelection)
 {
-    let computerSelection = getComputerChoice(arr);  
-    if (playerSelection == computerSelection){ 
+    let computerSelection = getComputerChoice(SELECTIONS);  
+    if (playerSelection == computerSelection.name){ 
 		console.log("Tie!");
         statusBar.innerText = "Tie!";
     }
         
-    else
-        {switch (playerSelection + computerSelection){
-            case 'rockscissors':
-            case 'scissorspaper':
-            case 'paperrock':
-            statusBar.innerText = "You Win!" + " " + (playerSelection.toLowerCase()).charAt(0).toUpperCase() + playerSelection.slice(1) + " " + "wins against" +" " + computerSelection + ".";
-				pscore+=1;
-				break;
-            default:
-                statusBar.innerText = "You lose!" + " " + (playerSelection.toLowerCase()).charAt(0).toUpperCase() + playerSelection.slice(1) + " " + "loses against" +" " + computerSelection + ".";
+    else  if (playerSelection === playerSelection.beats){
+
+                statusBar.innerText = "You lose!" + " " + (playerSelection.toLowerCase()).charAt(0).toUpperCase() + playerSelection.slice(1) + " " + "loses against" +" " + computerSelection.name + ".";
                 cscore+=1;
-				break;
+    }
+    else {      
+        statusBar.innerText = "You Win!" + " " + (playerSelection.toLowerCase()).charAt(0).toUpperCase() + playerSelection.slice(1) + " " + "wins against" +" " + computerSelection.name + ".";
+        pscore+=1;
             }
-        }
-    pDisplay.innerText = "You threw" + " " + playerSelection;
+    pDisplay.innerText = "You threw" + " " + playerSelection+".";
     pDisplay_score.innerText = pscore;
-    cDisplay.innerText = "Computer went" + " " + computerSelection; 
+    cDisplay.innerText = "Computer went" + " with " + computerSelection.name +"."; 
     cDisplay_score.innerText = cscore;
 	
 	var max = Math.max(pscore, cscore, 5);
 	if (max == pscore) statusBar.innerText = String("You are the ultimate winner.");
 	else if (max == cscore) statusBar.innerText = String("Computer wins.");
-    }
 
-
+}
